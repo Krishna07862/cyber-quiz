@@ -1,4 +1,58 @@
 
+import json
+import os
+
+LEADERBOARD_FILE = "leaderboard.json"
+
+
+def load_leaderboard():
+    """Load saved player scores from a JSON file."""
+    if not os.path.exists(LEADERBOARD_FILE):
+        return {}
+
+    try:
+        with open(LEADERBOARD_FILE, "r") as file:
+            return json.load(file)
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def save_high_score(player_name, score):
+    """Save a player's score only if it is their personal best."""
+    leaderboard = load_leaderboard()
+
+    old_score = leaderboard.get(player_name, 0)
+
+    if score > old_score:
+        leaderboard[player_name] = score
+
+        with open(LEADERBOARD_FILE, "w") as file:
+            json.dump(leaderboard, file, indent=4)
+
+        print("New personal high score saved!")
+    else:
+        print(f"Your personal best is still {old_score}.")
+
+
+def show_leaderboard():
+    """Display players in highest-score order."""
+    leaderboard = load_leaderboard()
+
+    print("\n===== LEADERBOARD =====")
+
+    if not leaderboard:
+        print("No scores saved yet.")
+        return
+
+    sorted_players = sorted(
+        leaderboard.items(),
+        key=lambda item: item[1],
+        reverse=True
+    )
+
+    for rank, (name, score) in enumerate(sorted_players, start=1):
+        print(f"{rank}. {name} — {score} points")
+
 import random
 
 questions = [
@@ -168,6 +222,12 @@ def play_game():
         print("Keep going! Review the basics and try again.")
 
     print("=" * 42)
+    player_name = input("Enter your name: ").strip()
+
+    if player_name:
+        save_high_score(player_name, score)
+
+    show_leaderboard()
 
     again = input("\nPlay again? (y/n): ").strip().lower()
     if again == "y":
