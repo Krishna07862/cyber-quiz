@@ -1,62 +1,45 @@
-Cyber Quiz
+# Cyber Quiz
 
-A cybersecurity quiz project designed to test your knowledge of cybersecurity.
+A cybersecurity quiz project.
 
-Requirements
+## How to Run
 
-- Android phone
-- Termux
-- Git
-- Python 3 (if the project uses Python)
+### Install Termux packages
 
-How to Run on Termux
-
-Step 1: Install Termux
-
-Download Termux from the official source:
-https://github.com/termux/termux-app
-
-Step 2: Update packages
-
-Open Termux and run:
-
+```bash
 pkg update && pkg upgrade -y
-
-Step 3: Install Git and Python
-
-pkg install git python -y
-
-Step 4: Clone the repository
+pkg install git python -y.
 
 git clone https://github.com/Krishna07862/cyber-quiz.git
-
-Step 5: Enter the project folder
-
 cd cyber-quiz
 
-Step 6: Install dependencies
 
-If your project contains a "requirements.txt" file, run:
+## Step 4: Save the file in Nano
 
-pip install -r requirements.txt
+<box border radius="lg" padding={3} gap={3}>
+  <row align="center" gap={3}>
+    <box background="surface-secondary" radius="md" padding={2}>
+      <icon name="keyboard" size="xl"/>
+    </box>
+    <box flex="1" gap={1}>
+      **Save**
+      <text color="secondary" size="sm">Press `CTRL + O`, then press `Enter`.</text>
+    </box>
+  </row>
+  <divider color="subtle"/>
+  <row align="center" gap={3}>
+    <box background="surface-secondary" radius="md" padding={2}>
+      <icon name="log-out" size="xl"/>
+    </box>
+    <box flex="1" gap={1}>
+      **Exit**
+      <text color="secondary" size="sm">Press `CTRL + X`.</text>
+    </box>
+  </row>
+</box>
 
-Step 7: Run the project
+**On Android:** If you don't have a Ctrl key visible in Termux, press `Volume Down + O` to save, then `Volume Down + X` to exit. You can also enable the extra-keys row in Termux.
 
-Check the project files to identify the correct command.
-
-For a Python project, it may be:
-
-python main.py
-
-Replace "main.py" with your actual Python filename if different.
-
-Contributing
-
-You can fork this repository, make changes, and submit a pull request.
-
-Disclaimer
-
-This project is intended for educational purposes.
 
 ## Author
 Krishna NH
